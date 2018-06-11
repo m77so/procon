@@ -26,20 +26,20 @@ using namespace std;
 
 using ll = long long;
 using ul = unsigned long;
-#define INF 999999999
+#define INF 1LL<<60
 #define PRIME 1000000007
 int dy[]={0, 0, 1, -1};
 int dx[]={1, -1, 0, 0};
-#define REP(i,n) for(int i=0, i##_len=(n); i<i##_len; ++i)
+#define REP(i,n) for(ll i=0, i##_len=(n); i<i##_len; ++i)
 #define ALL(x) (x).begin(),(x).end()
-int gcd(int a,int b){return b?gcd(b,a%b):a;}
+ll gcd(ll a,ll b){return b?gcd(b,a%b):a;}
 
 int main(){
 	cin.tie(0);
-  ios::sync_with_stdio(false);
-  int n,m;
+	ios::sync_with_stdio(false);
+	ll n,m;
 
 
 
-  return 0;
+	return 0;
 }
