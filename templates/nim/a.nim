@@ -6,7 +6,7 @@ macro unpack*(rhs: seq,cnt: static[int]):auto  =
   let t = genSym();result = quote do:(let `t` = `rhs`;())
   when NimMajor == 0 and NimMinor < 17:
     for i in 0..<cnt:result[0][1].add(quote do:`t`[`i`])
-  when NimMajor >= 0 and NimMinor >= 17:
+  else:
     for i in 0..<cnt:result[1].add(quote do:`t`[`i`])
 
 template readInt(): int=
