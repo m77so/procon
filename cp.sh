@@ -1,6 +1,9 @@
 #!/bin/bash
 if [ -L $0 ]; then
-  shdir="$(dirname $0)/$(dirname `readlink "$0"`)"
+  shdir="$(dirname `readlink "$0"`)"
+  if [ ${shdir:0:1} != '/' -a ${shdir:0:1} != '~' ]  ; then
+    shdir="$(dirname $0)/$shdir"
+  fi
 else
   shdir="$(dirname $0)"
 fi
