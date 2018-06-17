@@ -1,15 +1,14 @@
 #!/bin/bash
-dir=${PWD##*/} 
-if [ ${dir} = "workspace" ]; then
-  ext=${1#*.}
-  nam=${1%.*}
-  if [ ${ext} = "cpp" ]; then
-    cp ../templates/cpp/a.cpp ${nam}.cpp
-  elif [ ${ext} = "nim" ]; then
-    cp ../templates/nim/a.nim ${nam}.nim
-  elif [ ${ext} = "py" ]; then
-    cp ../templates/python3/a.py ${nam}.py
-  fi
+if [ -L $0 ]; then
+  shdir="$(dirname $0)/$(dirname `readlink "$0"`)"
 else
-  echo "${dir} is not workspace"
+  shdir="$(dirname $0)"
+fi
+ext=${1#*.}
+if [ ${ext} = "cpp" ]; then
+  cp　-i ${shdir}/templates/cpp/a.cpp $1
+elif [ ${ext} = "nim" ]; then
+  cp -i ${shdir}/templates/nim/a.nim $1
+elif [ ${ext} = "py" ]; then
+  cp -i ${shdir}/templates/python3/a.py $1
 fi
