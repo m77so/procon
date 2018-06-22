@@ -1,7 +1,6 @@
 #!/usr/bin/env nim
-import strutils, macros, sequtils
+import strutils, macros, sequtils, algorithm,hashes,tables,queues, nre, sets, math, future, typetraits
 
-# var (a,b,c) = readInts().unpack(3)
 macro unpack*(rhs: seq,cnt: static[int]):auto  =
   let t = genSym();result = quote do:(let `t` = `rhs`;())
   when NimMajor == 0 and NimMinor < 17:
@@ -16,6 +15,13 @@ template readInts(): seq[int]=
 template readMatrix(n:int): seq[seq[int]]=
   (0..<`n`).mapIt(stdin.readLine.split.map(parseInt))
 
-# var (n,m) = readInts().unpack(2)
-# var n = readMatrix(3)
-# echo n
+when NimMajor == 0 and NimMinor <= 13:
+  proc join*[T: not string](a: openArray[T], sep: string = ""): string {.noSideEffect, rtl.} =
+    result = ""
+    for i, x in a:
+      if i > 0:
+        add(result, sep)
+      add(result, $x)
+
+
+# var (n,m) = readInts.unpack 2
