@@ -15,13 +15,5 @@ template readInts(): seq[int]=
 template readMatrix(n:int): seq[seq[int]]=
   (0..<`n`).mapIt(stdin.readLine.split.map(parseInt))
 
-when NimMajor == 0 and NimMinor <= 13:
-  proc join*[T: not string](a: openArray[T], sep: string = ""): string {.noSideEffect, rtl.} =
-    result = ""
-    for i, x in a:
-      if i > 0:
-        add(result, sep)
-      add(result, $x)
-
 
 # var (n,m) = readInts.unpack 2
