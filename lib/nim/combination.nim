@@ -1,3 +1,4 @@
+
 type CombinationObj = object of RootObj
   fact: seq[int64]
   factinv: seq[int64]
@@ -46,6 +47,9 @@ proc H(obj: CombinationObj,n: int,k:int): int64=
     return 0
   obj.C(n+k-1,k)
 
+template C(obj: CombinationObj,n: int64,k:int64): int64=obj.C(n.int,k.int)
+template P(obj: CombinationObj,n: int64,k:int64): int64=obj.P(n.int,k.int)
+template H(obj: CombinationObj,n: int64,k:int64): int64=obj.H(n.int,k.int)
 
 # let c = combination()
 # echo c.C(30,3)

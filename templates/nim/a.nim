@@ -23,7 +23,7 @@ template `//=`*(x,y:typed):void = x = x div y
 template `//`*(x,y:typed):typed = x div y
 template readInt(): int=stdin.readLine.parseInt
 template readInts(): seq[int]=stdin.readLine.split.map(parseInt)
-template readMatrix(n:int): seq[seq[int]]=(0..<`n`).mapIt(readInts)
+template readMatrix(n:int): seq[seq[int]]=(0..<`n`).mapIt(stdin.readLine.split.map(parseInt))
 
 macro ll*(x: varargs[untyped]): auto =
   result = newNimNode(nnkStmtList,x)
@@ -33,4 +33,8 @@ macro cinLL*(x: varargs[untyped]):auto =
   result.add(quote do:(let `t`=stdin.readLine.split.map(parseBiggestInt)))
   for e in x.children:result.add(quote do:(var `e` : int64 = `t`[`c`]));c.inc
 
+macro cint*(x: varargs[untyped]):auto =
+  let t = genSym();var c = 0;result = newNimNode(nnkStmtList,x);
+  result.add(quote do:(let `t`=stdin.readLine.split.map(parseInt)))
+  for e in x.children:result.add(quote do:(var `e` : int = `t`[`c`]));c.inc
 # var (n,m) = readInts.unpack 2

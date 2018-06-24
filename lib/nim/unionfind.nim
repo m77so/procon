@@ -1,9 +1,8 @@
 import sequtils
 type UnionFind* = object
   data: seq[int]
-  size: int
 proc newUnionFind(size: int) : UnionFind =
-  UnionFind(data: newSeqWith(size,-1), size: 0)
+  UnionFind(data: newSeqWith(size,-1))
 proc root(uf: var UnionFind, x: int): int =
   if uf.data[x] < 0 :
     result = x
