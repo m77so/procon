@@ -14,4 +14,6 @@ elif [ ${ext} = "nim" ]; then
   cp -i ${shdir}/templates/nim/a.nim $1
 elif [ ${ext} = "py" ]; then
   cp -i ${shdir}/templates/python3/a.py $1
+elif [ ${ext} = "kt" ]; then
+  cp -i ${shdir}/templates/kotlin/a.kt $1
 fi
