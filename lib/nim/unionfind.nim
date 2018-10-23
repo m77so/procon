@@ -9,9 +9,9 @@ proc root(uf: var UnionFind, x: int): int =
   else:  
     uf.data[x] = uf.root(uf.data[x])
     result = uf.data[x]
-proc union(uf: var UnionFind, x: var int, y: var int) : bool =
-  x = uf.root(x)
-  y = uf.root(y)
+proc union(uf: var UnionFind, xx: int, yy: int) : bool =
+  var x = uf.root(xx)
+  var y = uf.root(yy)
   if x != y:
     if uf.data[y] < uf.data[x]:
       (y,x) = (x,y)
